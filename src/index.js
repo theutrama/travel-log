@@ -17,8 +17,14 @@ mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).catch(() => {
-    console.log("hello");
+    console.log("connection not settled");
 })
+
+mongoose.connection.once("open", () => {
+    console.log("connection has been made")
+}).on("error", (err) => {
+    console.log("connection error", err);
+});
 
 app.use(morgan("common"));
 app.use(helmet());
