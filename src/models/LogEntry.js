@@ -17,7 +17,7 @@ comments:   String,
 image: String,
 rating: {
     type: Number,
-    min: 1,
+    min: 0,
     max: 10,
     default: 0,
 },
